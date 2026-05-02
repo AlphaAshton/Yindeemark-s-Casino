@@ -1,0 +1,1 @@
+A terminal-based Higher or Lower card game built in Python. Draw a card and guess whether the next card will be higher or lower. Features a full deck from 2 to Ace, input validation, tie handling (free rounds), score tracking, and a high score system that persists between games.
