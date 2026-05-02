@@ -1,0 +1,43 @@
+import random #imports a random generator for the game 
+deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
+playing = True
+high_score = 0  # starts at zero
+score = 0
+
+print("====Yindeemark's Casino====")
+print()
+print("**Guess Higher or Lower. Ties are free rounds. Capitalization doesn't matter. GL!**")
+print()
+
+play_again = "yes"
+while play_again == "yes":
+    score = 0
+    playing = True  
+    while playing: # game basically runs until you get it wrong
+        current_card = random.choice(deck) # python picks a random card out of the deck
+        print(f"Your card is: {current_card}")
+        guess = input("Higher or Lower?: ").lower().strip() # user input for Higher/Lower
+        while guess not in ["higher", "lower"]: # validates input so no wrong inputs
+            print("Invalid! Type 'higher' or 'lower'")
+            guess = input("Higher or Lower?: ").lower().strip()
+        next_card = random.choice(deck) # after user input next card is given
+        print(f"Next card is: {next_card}")
+        if guess == "higher" and deck.index(next_card) > deck.index(current_card):
+            print("Correct!")
+            score += 1 # adds score when you get it correct
+        elif guess == "lower" and deck.index(next_card) < deck.index(current_card):
+            print("Correct!")
+            score += 1
+        elif deck.index(next_card) == deck.index(current_card):
+            print("Tie! Free Round")
+        else:
+            playing = False
+            print("Game Over!")
+    if score > high_score:
+        high_score = score
+        print("New High Score!!")
+    print(f"Your final score: {score}")# shows final score when game ends
+    print(f"High score: {high_score}")
+    play_again = input("Play again? (yes/no): ").lower().strip()
+
+print("Thank you for playing my Casino lmao")
